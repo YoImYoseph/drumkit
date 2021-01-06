@@ -6,13 +6,17 @@ for (var i = 0; i<document.querySelectorAll(".drum").length; i++){
 
     makeSound(eachBtn);
 
+    colorChange(eachBtn);
+
   });
 
 }
 
-document.addEventListener("keypress", function(event) {
+document.addEventListener("keydown", function(event) {
 
   makeSound(event.key);
+
+  colorChange(event.key);
 
 });
 
@@ -58,6 +62,18 @@ function makeSound(key){
     default: console.log();
 
   }
+
+}
+
+function colorChange(pressedKey) {
+
+  var activeBtn = document.querySelector("." + pressedKey);
+
+  activeBtn.classList.add("pressed");
+
+  setTimeout(function() {
+    activeBtn.classList.remove("pressed");
+  }, 100);
 
 }
 
